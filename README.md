@@ -2,8 +2,8 @@
 
 ## Requirements:
 - Angular 21
-- Node.js
-- npm
+- Node.js 20
+- npm 10
 
 ## Build the application:
 ```npm build```
