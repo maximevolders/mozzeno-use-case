@@ -8,5 +8,5 @@ import { RouterOutlet } from '@angular/router';
   styleUrl: './app.scss'
 })
 export class App {
-  protected readonly title = signal('mon-projet');
+  protected readonly title = signal('mozzeno-use-case');
 }

@@ -6,7 +6,7 @@
   },
   "newProjectRoot": "projects",
   "projects": {
-    "mon-projet": {
+    "mozzeno-use-case": {
       "projectType": "application",
       "schematics": {
         "@schematics/angular:component": {
@@ -61,10 +61,10 @@
           "builder": "@angular/build:dev-server",
           "configurations": {
             "production": {
-              "buildTarget": "mon-projet:build:production"
+              "buildTarget": "mozzeno-use-case:build:production"
             },
             "development": {
-              "buildTarget": "mon-projet:build:development"
+              "buildTarget": "mozzeno-use-case:build:development"
             }
           },
           "defaultConfiguration": "development"
