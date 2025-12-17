@@ -1,0 +1,23 @@
+<mat-card id="purposes" appearance="outlined">
+    <mat-card-header>
+      <mat-card-title>Select the type of loan</mat-card-title>
+    </mat-card-header>
+    <mat-card-content>
+      @if (purposesLoading()) {
+        <mat-spinner></mat-spinner>
+      }
+      @else {
+        @for (item of purposes; track item.id) {
+            <mat-card id="item.purpose" appearance="outlined" class="clickable-card" (click)="onLoadPurposeChange(item.id)">
+                <mat-card-header>
+                    <mat-card-title>{{ item.purpose }}</mat-card-title>
+                </mat-card-header>
+                <mat-card-content>
+                    <p>Min amount: {{ item.minimum_amount }}</p>
+                    <p>Max amount: {{ item.maximum_amount }}</p>
+                </mat-card-content>
+            </mat-card>
+        }
+      }
+    </mat-card-content>
+</mat-card>

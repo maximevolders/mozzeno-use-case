@@ -2,7 +2,7 @@ import { TestBed } from '@angular/core/testing';
 import { LoanPurposesService } from './loan-purposes.service';
 import { HttpTestingController, provideHttpClientTesting } from '@angular/common/http/testing';
 import { environment } from '../../environments/environment';
-import { LoanPurposeModel } from '../model/loan-purpose.model';
+import { LoanPurposeModel } from '@models/loan-purpose.model';
 
 describe('LoanPurposes', () => {
   let service: LoanPurposesService;
@@ -26,12 +26,12 @@ describe('LoanPurposes', () => {
       {
         id: 'id1',
         purpose: 'purpose1',
-        minimumAmount: 10,
-        purposeSplitThresholdAmount: 10,
-        maximumAmount: 10,
-        averageAmount: 10,
-        averageAmountCurrency: 'EUR',
-        averageDuration: 10,
+        minimum_amount: 10,
+        purpose_split_threshold_amount: 10,
+        maximum_amount: 10,
+        average_amount: 10,
+        average_amount_currency: 'EUR',
+        average_duration: 10,
         type: 1,
         details: 'details1',
         links: []
@@ -39,12 +39,12 @@ describe('LoanPurposes', () => {
       {
         id: 'id2',
         purpose: 'purpose2',
-        minimumAmount: 20,
-        purposeSplitThresholdAmount: 20,
-        maximumAmount: 20,
-        averageAmount: 20,
-        averageAmountCurrency: 'USD',
-        averageDuration: 20,
+        minimum_amount: 20,
+        purpose_split_threshold_amount: 20,
+        maximum_amount: 20,
+        average_amount: 20,
+        average_amount_currency: 'USD',
+        average_duration: 20,
         type: 2,
         details: 'details2',
         links: []

@@ -1,0 +1,9 @@
+{
+    "/api": {
+      "target": "https://api-dev.mozzeno.com",
+      "secure": false,
+      "changeOrigin": true,
+      "logLevel": "debug"
+    }
+  }
+  
