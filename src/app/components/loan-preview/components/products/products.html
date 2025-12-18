@@ -1,4 +1,3 @@
-<h2>Products</h2>
 @if (productLoading()) {
 <mat-spinner></mat-spinner>
 }
@@ -14,9 +13,48 @@
                       <mat-card-title>{{item.duration}} Months</mat-card-title>
                 </mat-card-header>
                 <mat-card-content>
-                    <p>Monthly payment: € {{item.min_instalment_amount | number:'1.2-2':'fr' }} - € {{item.max_instalment_amount | number:'1.2-2':'fr' }}</p>
-                    <p>Rate: {{item.min_rate | number:'1.2-2':'fr' }} % - {{item.max_rate | number:'1.2-2':'fr' }} %</p>
-                    <p>Total payment: € {{item.min_total_payment | number:'1.2-2':'fr' }} - € {{item.max_total_payment | number:'1.2-2':'fr' }}</p>
+                    <div class="row">
+                        <div class="col"></div>
+                        <div class="col">
+                            <h5>Min</h5>
+                        </div>
+                        <div class="col">
+                            <h5>Max</h5>
+                        </div>
+                    </div>
+                    <div class="row">
+                        <div class="col">
+                            Monthly payment:
+                        </div>
+                        <div class="col">
+                            € {{item.min_instalment_amount | number:'1.2-2':'fr' }}
+                        </div>
+                        <div class="col">
+                            € {{item.max_instalment_amount | number:'1.2-2':'fr' }}
+                        </div>
+                    </div>
+                    <div class="row">
+                        <div class="col">
+                            Rate:
+                        </div>
+                        <div class="col">
+                            {{item.min_rate | number:'1.2-2':'fr' }} %
+                        </div>
+                        <div class="col">
+                            {{item.max_rate | number:'1.2-2':'fr' }} %
+                        </div>
+                    </div>
+                    <div class="row">
+                        <div class="col">
+                            Total payment:
+                        </div>
+                        <div class="col">
+                            € {{item.min_total_payment | number:'1.2-2':'fr' }}
+                        </div>
+                        <div class="col">
+                            € {{item.max_total_payment | number:'1.2-2':'fr' }}
+                        </div>
+                    </div>
                 </mat-card-content>
             </mat-card>
         }

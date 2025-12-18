@@ -52,8 +52,8 @@ export class Products {
   computeProducts(data: Array<ProductModel>) {
     this.products = Object.values(
       data.reduce((acc, val) => {
-        if (!acc[val.id]) {
-          acc[val.id] = {
+        if (!acc[val.duration]) {
+          acc[val.duration] = {
             id: val.id,
             duration: val.duration,
             min_rate: val.rate_apr,
@@ -64,13 +64,13 @@ export class Products {
             max_total_payment: val.instalment_amount * val.duration
           };
         } else {
-          acc[val.id].min_rate = Math.min(acc[val.id].min_rate, val.rate_apr);
-          acc[val.id].min_instalment_amount = Math.min(acc[val.id].min_instalment_amount, val.instalment_amount);
-          acc[val.id].min_total_payment = Math.min(acc[val.id].min_total_payment, val.instalment_amount * val.duration);
+          acc[val.duration].min_rate = Math.min(acc[val.duration].min_rate, val.rate_apr);
+          acc[val.duration].min_instalment_amount = Math.min(acc[val.duration].min_instalment_amount, val.instalment_amount);
+          acc[val.duration].min_total_payment = Math.min(acc[val.duration].min_total_payment, val.instalment_amount * val.duration);
 
-          acc[val.id].max_rate = Math.max(acc[val.id].max_rate, val.rate_apr);
-          acc[val.id].max_instalment_amount = Math.max(acc[val.id].max_instalment_amount, val.instalment_amount);
-          acc[val.id].max_total_payment = Math.max(acc[val.id].max_total_payment, val.instalment_amount * val.duration);
+          acc[val.duration].max_rate = Math.max(acc[val.duration].max_rate, val.rate_apr);
+          acc[val.duration].max_instalment_amount = Math.max(acc[val.duration].max_instalment_amount, val.instalment_amount);
+          acc[val.duration].max_total_payment = Math.max(acc[val.duration].max_total_payment, val.instalment_amount * val.duration);
         }
         return acc;
       }, {} as Record<string, ComputedProductModel>)

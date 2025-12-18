@@ -55,22 +55,27 @@ describe('Products', () => {
       }
     ];
 
-    // Assert response
     service.getProducts(purposeId, amount).subscribe(products => {
-      expect(products.length).toBe(2);
-      expect(products).toEqual(mockResponse);
+      expect(products.length).toBe(mockResponse.length * 2);
+      expect(products).toEqual([...mockResponse,...mockResponse]);
     });
 
-    // Assert request is made
-    const request = httpMock.expectOne(request =>
+    const requestA = httpMock.expectOne(request =>
       request.method === 'GET' &&
-      request.url === `${environment.apiBaseUrl}/api/products/`
+      request.url === `${environment.apiBaseUrl}/api/products/` &&
+      request.params.get('riskclass') === 'A'
     );
-
-    expect(request.request.params.get('purposeid')).toEqual(purposeId);
-    expect(request.request.params.get('amount')).toEqual(amount.toString());
+    expect(requestA.request.params.get('purposeid')).toEqual(purposeId);
+    expect(requestA.request.params.get('amount')).toEqual(amount.toString()); 
+    requestA.flush(mockResponse);
     
-    // Simulate API answer
-    request.flush(mockResponse);
+    const requestD = httpMock.expectOne(request =>
+      request.method === 'GET' &&
+      request.url === `${environment.apiBaseUrl}/api/products/` &&
+      request.params.get('riskclass') === 'D'
+    );
+    expect(requestD.request.params.get('purposeid')).toEqual(purposeId);
+    expect(requestD.request.params.get('amount')).toEqual(amount.toString());
+    requestD.flush(mockResponse);
   });  
 });
