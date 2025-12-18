@@ -10,7 +10,7 @@
         <div class="card-scroll-container">
           @for (item of purposes; track item.id) {
               <mat-card 
-                id="item.purpose" 
+                [id]="item.purpose" 
                 appearance="outlined" 
                 class="{{ selectedLoanPurposeSignal()?.id === item.id ? 'selected-card' : '' }} clickable-card inner-card"
                 (click)="onLoadPurposeChange(item)">
@@ -18,8 +18,8 @@
                       <mat-card-title>{{ item.purpose }}</mat-card-title>
                   </mat-card-header>
                   <mat-card-content>
-                      <p>Min amount: {{ item.minimum_amount }}</p>
-                      <p>Max amount: {{ item.maximum_amount }}</p>
+                      <p>Min amount: € {{ item.minimum_amount | number:'1.2-2':'fr' }}</p>
+                      <p>Max amount: € {{ item.maximum_amount | number:'1.2-2':'fr' }}</p>
                   </mat-card-content>
               </mat-card>
           }

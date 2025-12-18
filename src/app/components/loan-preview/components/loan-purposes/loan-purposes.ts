@@ -4,10 +4,11 @@ import { finalize } from 'rxjs';
 import { LoanPurposeModel } from '@models/loan-purpose.model';
 import { MatCard, MatCardHeader, MatCardTitle, MatCardContent } from '@angular/material/card';
 import { MatProgressSpinner } from '@angular/material/progress-spinner';
+import { CommonModule } from '@angular/common';
 
 @Component({
   selector: 'app-loan-purposes',
-  imports: [MatCard, MatCardHeader, MatCardTitle, MatCardContent, MatProgressSpinner],
+  imports: [CommonModule, MatCard, MatCardHeader, MatCardTitle, MatCardContent, MatProgressSpinner],
   templateUrl: './loan-purposes.html',
   styleUrl: './loan-purposes.scss',
 })

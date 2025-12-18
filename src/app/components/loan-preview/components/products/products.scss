@@ -1,0 +1,29 @@
+.card-container {
+  gap: 1rem;
+  padding: 1rem;
+  display: flex;
+  flex-direction: column;
+  flex-wrap: nowrap;
+}
+
+.clickable-card {
+    cursor: pointer;
+    transition: transform 0.1s;
+  }
+  
+.clickable-card:not(.selected-card):hover {
+    transform: scale(1.02);
+    box-shadow: 0 4px 12px rgba(0,0,0,0.2);
+}
+
+.selected-card {
+    transform: scale(1.05);
+    border: 2px solid green;
+    box-shadow: 0 6px 16px rgba(0,0,0,0.3);
+}
+
+.card {
+    width: 20rem;
+    min-width: 20rem;
+    max-width: 80vw;
+}

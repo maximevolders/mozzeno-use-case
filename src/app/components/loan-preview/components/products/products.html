@@ -2,9 +2,22 @@
 <mat-spinner></mat-spinner>
 }
 @else {
-    @for (item of products; track item.id ) {
-        <mat-card>
-            
-        </mat-card>
-    }
+    <div class="card-container">
+        @for (item of products; track item.id ) {
+            <mat-card
+                [id]="item.id" 
+                appearance="outlined" 
+                class="{{ selectedProductSignal()?.id === item.id ? 'selected-card' : '' }} clickable-card card"
+                (click)="onProductChange(item)">
+                <mat-card-header>
+                      <mat-card-title>{{item.duration}} Months</mat-card-title>
+                </mat-card-header>
+                <mat-card-content>
+                    <p>Monthly payment (min): € {{item.instalment_amount | number:'1.2-2':'fr' }}</p>
+                    <p>Rate (min): {{item.rate_apr | number:'1.2-2':'fr' }} %</p>
+                    <p>Total payment (min): € {{getTotalPayment(item.instalment_amount, item.duration) | number:'1.2-2':'fr' }}</p>
+                </mat-card-content>
+            </mat-card>
+        }
+    </div>
 }
