@@ -20,8 +20,7 @@ export class LoanPurposes implements OnInit {
   purposesLoading = signal(false);
   purposes: Array<LoanPurposeModel> = [];
 
-  constructor(private loanPurposesService: LoanPurposesService
-  ) {}
+  constructor(private loanPurposesService: LoanPurposesService) {}
 
   ngOnInit(): void {
     this.purposesLoading.set(true);

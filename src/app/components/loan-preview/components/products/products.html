@@ -7,15 +7,15 @@
             <mat-card
                 [id]="item.id" 
                 appearance="outlined" 
-                class="{{ selectedProductSignal()?.id === item.id ? 'selected-card' : '' }} clickable-card card"
+                class="{{ selectedProductSignal() === item.id ? 'selected-card' : '' }} clickable-card card"
                 (click)="onProductChange(item)">
                 <mat-card-header>
                       <mat-card-title>{{item.duration}} Months</mat-card-title>
                 </mat-card-header>
                 <mat-card-content>
-                    <p>Monthly payment (min): € {{item.instalment_amount | number:'1.2-2':'fr' }}</p>
-                    <p>Rate (min): {{item.rate_apr | number:'1.2-2':'fr' }} %</p>
-                    <p>Total payment (min): € {{getTotalPayment(item.instalment_amount, item.duration) | number:'1.2-2':'fr' }}</p>
+                    <p>Monthly payment: € {{item.min_instalment_amount | number:'1.2-2':'fr' }} - € {{item.max_instalment_amount | number:'1.2-2':'fr' }}</p>
+                    <p>Rate: {{item.min_rate | number:'1.2-2':'fr' }} % - {{item.max_rate | number:'1.2-2':'fr' }} %</p>
+                    <p>Total payment: € {{item.min_total_payment | number:'1.2-2':'fr' }} - € {{item.max_total_payment | number:'1.2-2':'fr' }}</p>
                 </mat-card-content>
             </mat-card>
         }

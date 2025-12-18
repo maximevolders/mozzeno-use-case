@@ -64,7 +64,7 @@ describe('Products', () => {
     // Assert request is made
     const request = httpMock.expectOne(request =>
       request.method === 'GET' &&
-      request.url === `${environment.apiBaseUrl}/api/products`
+      request.url === `${environment.apiBaseUrl}/api/products/`
     );
 
     expect(request.request.params.get('purposeid')).toEqual(purposeId);

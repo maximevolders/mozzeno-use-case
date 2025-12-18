@@ -17,7 +17,6 @@ export class ProductsService extends ApiBaseService {
       .set('amount', amount.toString())
       .set('currency', 'EUR')
       .set('simulation', 'true')
-      .set('riskclass', 'A')
       .set('branchId', '71c328ab-0e52-47dc-a50e-011469aebe87');
     return this.httpClient.get<Array<ProductModel>>(
       `${this.endpoint}/`,
