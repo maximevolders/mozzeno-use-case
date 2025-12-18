@@ -11,7 +11,7 @@
                 [formControl]="amountControl">
         @if (amountControl.hasError('min') || amountControl.hasError('max')) {
             <mat-error>
-                Amount should be between {{selectedLoanPurposeSignal()?.minimum_amount}} and {{selectedLoanPurposeSignal()?.maximum_amount}}
+                Amount should be between {{selectedLoanPurposeSignal()?.minimum_amount | number:'1.2-2':'fr'}} and {{selectedLoanPurposeSignal()?.maximum_amount | number:'1.2-2':'fr'}}
             </mat-error>
         }
         </mat-form-field>

@@ -5,11 +5,12 @@ import { LoanPurposeModel } from '@models/loan-purpose.model';
 import { LoanPurposes } from './components/loan-purposes/loan-purposes';
 import { Products } from "./components/products/products";
 import { Subject, takeUntil } from 'rxjs';
+import { CommonModule } from '@angular/common';
 
 
 @Component({
   selector: 'app-loan-preview',
-  imports: [LoanPurposes, Products, MatInput, MatError, MatFormField, ReactiveFormsModule],
+  imports: [CommonModule, LoanPurposes, Products, MatInput, MatError, MatFormField, ReactiveFormsModule],
   templateUrl: './loan-preview.component.html',
   styleUrl: './loan-preview.component.scss'
 })
