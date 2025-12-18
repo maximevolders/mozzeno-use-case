@@ -1,3 +1,24 @@
-<h1>Simulate your loan</h1>
+<div class="center">
+    <h1>Simulate your loan</h1>
 
-<app-loan-purposes/>
+    <app-loan-purposes [selectedLoanPurposeSignal]="selectedLoanPurposeSignal"/>
+    @if (selectedLoanPurposeSignal()) {
+        <h2>Amount</h2>
+        <mat-form-field appearance="fill">
+        <input matInput 
+                type="number" 
+                placeholder="Amount"
+                [formControl]="amountControl">
+        @if (amountControl.hasError('min') || amountControl.hasError('max')) {
+            <mat-error>
+                Amount should be between {{selectedLoanPurposeSignal()?.minimum_amount}} and {{selectedLoanPurposeSignal()?.maximum_amount}}
+            </mat-error>
+        }
+        </mat-form-field>
+        @if (!amountControl.invalid) {
+            <app-products 
+                [selectedLoanPurposeSignal]="selectedLoanPurposeSignal"
+                [amountSignal]="amountSignal"/>
+        }
+    }
+</div>

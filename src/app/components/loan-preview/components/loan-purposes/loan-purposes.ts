@@ -1,8 +1,7 @@
-import { Component, OnInit, signal } from '@angular/core';
+import { Component, Input, OnInit, signal, WritableSignal } from '@angular/core';
 import { LoanPurposesService } from '@services/loan-purposes.service';
 import { finalize } from 'rxjs';
 import { LoanPurposeModel } from '@models/loan-purpose.model';
-import { ProductsService } from '@services/products.service';
 import { MatCard, MatCardHeader, MatCardTitle, MatCardContent } from '@angular/material/card';
 import { MatProgressSpinner } from '@angular/material/progress-spinner';
 
@@ -13,13 +12,14 @@ import { MatProgressSpinner } from '@angular/material/progress-spinner';
   styleUrl: './loan-purposes.scss',
 })
 export class LoanPurposes implements OnInit {
-  purposesLoading = signal(false);
-  productLoading = signal(false);
-  purposes: Array<LoanPurposeModel> = [];
-  products: Array<Object> = [];
+  
+  @Input()
+  selectedLoanPurposeSignal!: WritableSignal<LoanPurposeModel | null>;
 
-  constructor(private loanPurposesService: LoanPurposesService,
-              private productsService: ProductsService
+  purposesLoading = signal(false);
+  purposes: Array<LoanPurposeModel> = [];
+
+  constructor(private loanPurposesService: LoanPurposesService
   ) {}
 
   ngOnInit(): void {
@@ -29,10 +29,7 @@ export class LoanPurposes implements OnInit {
     .subscribe(data => this.purposes = data);
   }
 
-  onLoadPurposeChange(id: string) {
-    this.productLoading.set(true);
-    this.productsService.getProducts(id, 10000)
-    .pipe(finalize(() => this.productLoading.set(false)))
-    .subscribe(data => this.products = data);
+  onLoadPurposeChange(item: LoanPurposeModel) {
+    this.selectedLoanPurposeSignal.set(item);
   }
 }
