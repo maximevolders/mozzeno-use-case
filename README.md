@@ -18,3 +18,4 @@
 - Add internationalisation (translations)
 - Add animation to "Loan Purposes" cards when scrolling (carousel like effect)
 - When selecting a Loan Purpose, the card selected rotates and products are visible behind
+- Enhance unit tests (test for more than component creation)

@@ -12,6 +12,9 @@ export class LoanPurposesService extends ApiBaseService {
 
   loading = signal(false);
   
+  /**
+   * @returns Array of all LoanPurposes
+   */
   getLoanPurposes(): Observable<Array<LoanPurposeModel>> {
     return this.httpClient.get<Array<LoanPurposeModel>>(
       `${this.endpoint}`

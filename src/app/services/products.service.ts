@@ -11,6 +11,12 @@ export class ProductsService extends ApiBaseService {
 
   private readonly endpoint = `${this.baseUrl}/products`;
   
+  /**
+   * Returns all products (for all Risk Classes) linked to a specific LoanPurpose
+   * @param {string} purposeId: ID of the loan purpose
+   * @param {number} amount: amount of money to be borrowed
+   * @returns Array of all Products, for all Risk Classes
+   */
   getProducts(purposeId: string, amount: number): Observable<Array<ProductModel>> {
     const riskClasses = ['A', 'B', 'C', 'D'];
     const allProducts: Array<Observable<Array<ProductModel>>> = [];
